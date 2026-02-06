@@ -1,0 +1,4 @@
+.env
+legalasit/
+__pycache__/
+*.pyc

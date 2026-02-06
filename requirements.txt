@@ -1,0 +1,15 @@
+streamlit  
+python-docx
+sentencepiece
+langchain
+langchain-community
+langchain-huggingface
+pandas
+ipykernel
+spacy
+google-generativeai
+langchain-google-genai
+fitz
+langdetect
+en-core-web-sm
+transformers<5.0.0
