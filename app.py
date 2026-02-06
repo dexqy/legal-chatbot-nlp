@@ -25,14 +25,13 @@ if st.button("Analyze Document"):
 
             raw_text = ftl.extract_text_from_file(uploaded_file)
 
-            st.success("✅ Text extracted and normalized successfully!")
+            st.success(" Text extracted and normalized successfully!")
 
             contract_type = nlp_module.classify_contract_type(raw_text)
-            st.success(f"📑 Detected Contract Type: {contract_type}")
+            st.success(f" Detected Contract Type: {contract_type}")
 
             st.info("rocessing clauses ")
 
-            # Gemini clause processing
             results = gem.process_text(raw_text)
 
             st.success("Document processed successfully!")
@@ -67,7 +66,7 @@ if st.button("Analyze Document"):
                 st.markdown("---")
 
         except Exception as e:
-            st.error(f"❌ Error processing file: {e}")
+            st.error(f" Error processing file: {e}")
 
     else:
-        st.warning("⚠ Please upload a document first.")
+        st.warning(" Please upload a document first.")
