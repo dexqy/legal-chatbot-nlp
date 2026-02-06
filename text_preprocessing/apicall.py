@@ -1,18 +1,31 @@
 import os
-import re
-import time
 import spacy
-from google import genai
 from dotenv import load_dotenv
+from google import genai  
 
 load_dotenv()
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 
+
 client = genai.Client(api_key=GOOGLE_API_KEY)
 
-MODEL_NAME = "xx_ent_wiki_sm"
-nlp = spacy.load(MODEL_NAME)
-nlp.add_pipe("sentencizer")
+
+MODEL_NAME = "en_core_web_sm"
+
+try:
+    nlp = spacy.load(MODEL_NAME)
+except OSError:
+    from spacy.cli import download
+    print(f"Downloading SpaCy model '{MODEL_NAME}'...")
+    download(MODEL_NAME)
+    nlp = spacy.load(MODEL_NAME)
+
+#
+if "sentencizer" not in nlp.pipe_names:
+    nlp.add_pipe("sentencizer")
+
+
+
 
 
 def split_into_clauses(text: str):
